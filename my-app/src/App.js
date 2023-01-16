@@ -7,7 +7,7 @@ import Favorites from './Pages/Favorites'
 import Information from "./components/Information"
 import React, { useState } from 'react';
 import {Routes, Route} from "react-router-dom"
-
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -16,6 +16,7 @@ import {Routes, Route} from "react-router-dom"
 let bookStartInt=0;
 
 export default function App() {
+  const navigator=useNavigate();
 
 let pageCount = null;
 let bookTitles = ["title1"];
@@ -109,46 +110,18 @@ function addFavorite(book){
 
 
 
-  return (
-  
- 
-  <div className='App'>
-  <Header/>
-    <Routes> 
-
-
-<Route path="/favorites" element={ <Favorites/> }/>
-   <Route path="/" element={ <p> default path </p> } exact/>
- </Routes>
-
-  </div>
- 
-  
-  )
-}
-
-const Favorite=({favoriteBooks})=>{
-
-  return (<>
-{favoriteBooks.length>0 &&
-  favoriteBooks.map((item)=><h1>{item}</h1>)
-
-
-}
-  </>)
-}
-const Result=({books,favoriteBooks,addFavorite})=>{
+const Result=()=>{
 
   return <div className='container'> 
       {books.length>0 &&
       <>
-        <RenderBooks favoriteBooks={favoriteBooks} addFavorite={addFavorite} books={books} />
-        <Favorite favoriteBooks={favoriteBooks} />
+        <RenderBooks/>
+      
       </>
       }
      </div>
  }
- const RenderBooks=({books,addFavorite,favoriteBooks})=>{
+ const RenderBooks=()=>{
   const arr=[]
  for(let i=0;i<5;i++){
   if(books[i] && books[i].volumeInfo){
@@ -166,19 +139,29 @@ const Result=({books,favoriteBooks,addFavorite})=>{
 
 }
 
-const RenderFavorites=({favoriteBooks})=>{
- const arr=[];
- for(let i=0; i<favoriteBooks.length; i++){
-  arr.push(<Bookcard
-      title={favoriteBooks[i] }
-      author={favoriteBooks[i]}
-      image={favoriteBooks[i]}
-      self={favoriteBooks[i]}
-  />  )    
-
- }
 
 
 
 
+  return (
+  
+ 
+  <div className='App'>
+  <Header/>
+  <button onClick={()=>{navigator("/favorites")}}>go to favorite</button>
+    <Routes> 
+    
+
+  <Route path="/favorites" element={ <Favorites favoriteBooks={favoriteBooks} addFavorite={addFavorite} /> }/>
+  <Route path="/" element={ <> <Searchbar handleSearch={handleSearch} goLeft={goLeft} goRight={goRight} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> <Result /> </> } exact/>
+   
+     
+   </Routes>
+  
+   
+
+  </div>
+ 
+  
+  )
 }
