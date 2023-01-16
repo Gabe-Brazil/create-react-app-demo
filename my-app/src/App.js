@@ -1,14 +1,14 @@
 import './App.css'
 import Header from "./components/Header.jsx"
 import Searchbar from "./components/Searchbar.jsx"
-import Searchbutton from "./components/Searchbutton.jsx"
 import Bookcard from "./components/Bookcard.jsx"
 import Favorites from './Pages/Favorites'
-import Information from "./components/Information"
+import Information from "./components/Information.jsx"
 import React, { useState } from 'react';
 import {Routes, Route} from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 
+import Navbar from "./components/Navbar/Navbar.jsx"
 
 
 
@@ -148,12 +148,13 @@ const Result=()=>{
  
   <div className='App'>
   <Header/>
-  <button onClick={()=>{navigator("/favorites")}}>go to favorite</button>
+  <Navbar />
+
     <Routes> 
     
 
   <Route path="/favorites" element={ <Favorites favoriteBooks={favoriteBooks} addFavorite={addFavorite} /> }/>
-  <Route path="/" element={ <> <Searchbar handleSearch={handleSearch} goLeft={goLeft} goRight={goRight} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> <Result /> </> } exact/>
+  <Route path="/home" element={ <> <Searchbar handleSearch={handleSearch} goLeft={goLeft} goRight={goRight} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> <Result /> </> } exact/>
    
      
    </Routes>

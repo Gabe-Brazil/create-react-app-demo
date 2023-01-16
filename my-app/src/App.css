@@ -39,7 +39,7 @@ gap: 10px;
 
 .form__group {
   position: relative;
-  padding: 15px 0 0;
+  padding: 15px 10px 0;
   margin-top: 0px;
   width: 50%;
   font-family: "Poppins", sans-serif;
@@ -99,11 +99,11 @@ gap: 10px;
 }
 /* SEARCH BUTTON */
 .gradient-button {
-    margin: 10px;
+    margin: 5px;
     /*font-family: "Arial Black", Gadget, sans-serif;*/
   font-family: "Poppins", sans-serif;
     font-size: 20px;
-    padding: 15px;
+    padding: 5px;
     text-align: center;
    /* text-transform: uppercase; */
     transition: 0.5s;
@@ -111,7 +111,7 @@ gap: 10px;
     color: #FFF;
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
-    width: 200px;
+    width: 100px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     cursor: pointer;
@@ -147,4 +147,10 @@ border: 1px solid rgba(159, 207, 222, 0.33);
 
 .author{
   color:red;
+}
+
+.NavBtn{
+display:flex;
+flex-wrap: nowrap;
+
 }

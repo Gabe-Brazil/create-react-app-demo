@@ -9,10 +9,10 @@ function Searchbar({searchTerm,setSearchTerm,handleSearch,goLeft,goRight}){
       <label htmlFor="search-box" className="form__label"> Search</label>
    </form>
 
-
-    <button onClick={handleSearch}> Search! </button>
     <button onClick={goLeft}> Back </button>
     <button onClick={goRight}> Next </button>
+    <button class="gradient-button gradient-button-3" onClick={handleSearch}> Search! </button>
+    
     </div>
       
     )
