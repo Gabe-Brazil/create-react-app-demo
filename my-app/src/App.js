@@ -113,11 +113,12 @@ function addFavorite(book){
   
  
   <div className='App'>
-  
+  <Header/>
     <Routes> 
-<Route path="/" element={ <Header/> }/>
+
+
 <Route path="/favorites" element={ <Favorites/> }/>
-   
+   <Route path="/" element={ <p> default path </p> } exact/>
  </Routes>
 
   </div>

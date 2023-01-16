@@ -1,6 +1,6 @@
 function Header(){
     return(
-      <div className="rectangle" >  Search For Books!  </div>
+      <div className="rectangle" ><h1>Search For Books! </h1></div>
       
     
     )
