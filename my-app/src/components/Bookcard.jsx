@@ -1,4 +1,8 @@
-function Bookcard({title,author,image,addFavorite}){
+function Bookcard({title,author,image,self,addFavorite,marked}){
+
+ 
+ 
+  
     return(
       <div className="card">
         <h3 >{title}</h3>  
@@ -6,11 +10,11 @@ function Bookcard({title,author,image,addFavorite}){
         
         <p className="author"> {author} </p>
         <img className="thumbnail" src={image}/>
-        <button onClick={addFavorite}> Add to Favorite </button>    
+        <button onClick={()=>addFavorite(self)}>{marked?"Remove from":"Add to"}Favorite </button>    
         </div>
       
     
     )
     }
-    
+
     export default Bookcard;
