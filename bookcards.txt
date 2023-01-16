@@ -1,0 +1,26 @@
+<Bookcard
+        title={bookTitles[bookStartInt + 1]}
+        author={bookAuthor[bookStartInt + 1]}
+        thumbnail={imageSrc[bookStartInt + 1]}
+        /> 
+    <Bookcard
+        title={bookTitles[bookStartInt + 2]}
+        author={bookAuthor[bookStartInt + 2]}
+        thumbnail={imageSrc[bookStartInt + 2]}
+        /> 
+    <Bookcard
+        title={bookTitles[bookStartInt + 3]}
+        author={bookAuthor[bookStartInt + 3]}
+        thumbnail={imageSrc[bookStartInt + 3]}
+        /> 
+    <Bookcard    
+        title={bookTitles[bookStartInt + 4]}
+        author={bookAuthor[bookStartInt + 4]}
+        thumbnail={imageSrc[bookStartInt + 4]}
+    /> 
+    <Bookcard    
+        title={bookTitles[bookStartInt + 5]}
+        author={bookAuthor[bookStartInt + 5]}
+        thumbnail={imageSrc[bookStartInt + 5]}
+    /> 
+  
