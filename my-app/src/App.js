@@ -3,11 +3,12 @@ import Header from "./components/Header.jsx"
 import Searchbar from "./components/Searchbar.jsx"
 import Bookcard from "./components/Bookcard.jsx"
 import Favorites from './Pages/Favorites'
+import Detail from './Pages/Detail'
 import Information from "./components/Information.jsx"
 import React, { useState } from 'react';
 import {Routes, Route} from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
-
+import { useEffect } from 'react'
 import Navbar from "./components/Navbar/Navbar.jsx"
 
 
@@ -16,7 +17,8 @@ import Navbar from "./components/Navbar/Navbar.jsx"
 let bookStartInt=0;
 
 export default function App() {
-  const navigator=useNavigate();
+  const navigator = useNavigate();
+  
 
 let pageCount = null;
 let bookTitles = ["title1"];
@@ -121,6 +123,21 @@ const Result=()=>{
       }
      </div>
  }
+
+ function useEffectF(){
+
+ }
+useEffect(()=>{
+navigator("/home")
+},[])
+
+
+
+
+
+
+
+
  const RenderBooks=()=>{
   const arr=[]
  for(let i=0;i<5;i++){
@@ -154,8 +171,10 @@ const Result=()=>{
     
 
   <Route path="/favorites" element={ <Favorites favoriteBooks={favoriteBooks} addFavorite={addFavorite} /> }/>
+ 
   <Route path="/home" element={ <> <Searchbar handleSearch={handleSearch} goLeft={goLeft} goRight={goRight} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> <Result /> </> } exact/>
-   
+  
+  <Route path="/detail" element={ <Detail /> }/>
      
    </Routes>
   

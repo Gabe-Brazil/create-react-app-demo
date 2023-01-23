@@ -154,3 +154,10 @@ display:flex;
 flex-wrap: nowrap;
 
 }
+
+.favorites{
+  display:flex;
+  flex-wrap: nowrap;
+  padding: 10px;
+  gap: 10px;
+  }
