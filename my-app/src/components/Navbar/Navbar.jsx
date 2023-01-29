@@ -32,11 +32,11 @@ const Navbar = () => {
         </NavMenu>
         <div class='NavBtn'> 
         <NavBtn>
-          <NavBtnLink to='/signin'>Log In</NavBtnLink>
+          <NavBtnLink to='/login'>Log In</NavBtnLink>
         </NavBtn>
 
         <NavBtn>
-          <NavBtnLink to='/signin'>Sign Up</NavBtnLink>
+          <NavBtnLink to='/signup'>Sign Up</NavBtnLink>
           
         </NavBtn>
         </div>

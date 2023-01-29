@@ -2,9 +2,13 @@ import './App.css'
 import Header from "./components/Header.jsx"
 import Searchbar from "./components/Searchbar.jsx"
 import Bookcard from "./components/Bookcard.jsx"
+import Information from "./components/Information.jsx"
+
 import Favorites from './Pages/Favorites'
 import Detail from './Pages/Detail'
-import Information from "./components/Information.jsx"
+import Signup from './Pages/Signup'
+import Login from './Pages/Login'
+
 import React, { useState } from 'react';
 import {Routes, Route} from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
@@ -124,14 +128,16 @@ const Result=()=>{
      </div>
  }
 
+ /*
  function useEffectF(){
 
  }
+
 useEffect(()=>{
 navigator("/home")
 },[])
 
-
+*/
 
 
 
@@ -175,6 +181,10 @@ navigator("/home")
   <Route path="/home" element={ <> <Searchbar handleSearch={handleSearch} goLeft={goLeft} goRight={goRight} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> <Result /> </> } exact/>
   
   <Route path="/detail" element={ <Detail /> }/>
+
+  <Route path="/signup" element={ <Signup/>}/>
+
+  <Route path="/login" element={ <Login/>}/>
      
    </Routes>
   
