@@ -1,6 +1,7 @@
+import { useReducer } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-function Bookcard({title,author,image,self,addFavorite,marked,loading}){
+function Bookcard({title,author,image,self,addFavorite,marked,loading,user}){
 const location=useLocation();
  
 if(loading){
@@ -15,7 +16,7 @@ if(loading){
         
         <p className="author"> {author} </p>
         <img className="thumbnail" src={image}/>
-        <button onClick={()=>addFavorite(self)}>{marked?"Remove from ":"Add to "}Favorite </button>    
+        {user && user.login && <button onClick={()=>addFavorite(self)}>{marked?"Remove from ":"Add to "}Favorite </button>   }
         {location.pathname=="/favorites" &&
         
         <Link to="/detail"> 

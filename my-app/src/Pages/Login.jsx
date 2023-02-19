@@ -1,12 +1,14 @@
 import LoginForm from "../components/LoginForm.jsx"
 
-export default function Login(){
+export default function Login({setUser}){
     
 
     return(
     
       <> 
-      <LoginForm/>
+
+
+      <LoginForm setUser={setUser}/>
       
       </>
     )

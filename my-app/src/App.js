@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from "./components/Navbar/Navbar.jsx"
 
+import { getFavorites } from './utils/firebase'
 
 
 
@@ -29,6 +30,7 @@ let bookTitles = ["title1"];
 let bookAuthor = ["author1"];
 let imageSrc = ["img1"];
 
+const [user,setUser] = useState({login:false});
 const[books, setBooks] = useState([]);
 //const[bookStartInt, setStart] = useState([0]);
 
@@ -128,16 +130,13 @@ const Result=()=>{
      </div>
  }
 
- /*
- function useEffectF(){
-
- }
 
 useEffect(()=>{
-navigator("/home")
-},[])
+//return getFavorites(user);
+///setFavortiest to the return of the getFavorites after proccessing
+},[user])
 
-*/
+
 
 
 
@@ -155,6 +154,7 @@ navigator("/home")
     self={books[i].selfLink}
     addFavorite={addFavorite}
     marked={favoriteBooks.indexOf(books[i].selfLink)>-1}
+    user={user}
 />  )
   }
  }
@@ -171,20 +171,20 @@ navigator("/home")
  
   <div className='App'>
   <Header/>
-  <Navbar />
+  <Navbar user={user} setUser={setUser}/>
 
     <Routes> 
     
-
-  <Route path="/favorites" element={ <Favorites favoriteBooks={favoriteBooks} addFavorite={addFavorite} /> }/>
- 
+{user.login&&
+  <Route path="/favorites" element={ <Favorites favoriteBooks={favoriteBooks} addFavorite={addFavorite} user={user} /> }/>
+ }
   <Route path="/home" element={ <> <Searchbar handleSearch={handleSearch} goLeft={goLeft} goRight={goRight} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> <Result /> </> } exact/>
   
   <Route path="/detail" element={ <Detail /> }/>
 
   <Route path="/signup" element={ <Signup/>}/>
 
-  <Route path="/login" element={ <Login/>}/>
+  <Route path="/login" element={ <Login setUser={setUser}/>}/>
      
    </Routes>
   

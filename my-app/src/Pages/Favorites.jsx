@@ -2,7 +2,7 @@ import { useEffect ,useState} from "react"
 import Bookcard from "../components/Bookcard";
 import Detailbutton from "../components/Detailbutton";
 import { useNavigate } from "react-router";
-export default function Favorites({favoriteBooks,addFavorite}){
+export default function Favorites({favoriteBooks,addFavorite, user}){
 
   const navigator=useNavigate();
 const [books,setBooks]=useState([]);
@@ -26,7 +26,7 @@ const [loading,setLoading]=useState(true)
       })
       //arr is empty 
       console.log(arr.length==0)
-      if(arr.length==0){
+      if(arr.length==0 || !user.login){
        navigator("/home")
       }
      setBooks(arr)

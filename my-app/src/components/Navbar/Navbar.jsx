@@ -9,7 +9,16 @@ import {
   NavBtnLink,
 } from './NavbarElements';
   
-const Navbar = () => {
+
+import { logOut } from '../../utils/firebase';
+const Navbar = ({user,setUser}) => {
+   
+  const handleLogout=()=>{
+    logOut().then(()=>{
+      setUser({login:false})
+    })
+
+  }
   return (
     <>
       <Nav>
@@ -30,7 +39,8 @@ const Navbar = () => {
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        <div class='NavBtn'> 
+      {!user.login &&
+       <div class='NavBtn'> 
         <NavBtn>
           <NavBtnLink to='/login'>Log In</NavBtnLink>
         </NavBtn>
@@ -39,7 +49,14 @@ const Navbar = () => {
           <NavBtnLink to='/signup'>Sign Up</NavBtnLink>
           
         </NavBtn>
-        </div>
+        </div>}
+
+        {user.login &&
+         <NavBtn onClick={handleLogout}>
+        Sign out
+       </NavBtn>
+
+        }
       </Nav>
     </>
   );
