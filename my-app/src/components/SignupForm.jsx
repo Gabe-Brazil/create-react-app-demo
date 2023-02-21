@@ -15,6 +15,7 @@ function SignupForm(){
     await initializeUserDatabase(userCred.user,username)
     console.log(userCred)
   }catch(e){
+    alert("signup success")
     console.log(e)
   }
   }

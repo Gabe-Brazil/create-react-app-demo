@@ -2,16 +2,18 @@ import { signIn,SignInEmail } from "../utils/firebase";
 import { logOut } from "../utils/firebase";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
-function Login({setUser}){
+import { getUserData } from "../utils/firebase";
+import { getFavorites } from "../utils/firebase";
+
+ function Login({setUser,setFavorite}){
   const [form,setForm]=useState({email:"",password:""})
   const navigator = useNavigate();
-  const handleLogIn=(e,provider)=>{
+  const handleLogIn=async(e,provider)=>{
     e.preventDefault();
-
+try{
      if(provider=="google"){
-   signIn().then(user=>{
+      const user=await signIn();
       console.log(user)
-      //setUser(user)
       setUser({
         name:user.displayName,
         photo:user.photoURL,
@@ -19,29 +21,30 @@ function Login({setUser}){
         id:user.uid,
         login:true
       })
-  
+      const favoritesArr=await getFavorites(user)
+      setFavorite(favoritesArr)
 
-      ////database[id] /collection 
-
-   }).catch(e=>{
-    alert(e)
-   })
   }else if(provider=="email"){
-    SignInEmail(form.email,form.password).then(user=>{
-      console.log(user)
-      alert("succefully log in ")
-      navigator("/home")
-      setUser({
-        name:"",
-        photo:"",
-        email:user.email,
-        id:user.uid,
+    const user=await SignInEmail(form.email,form.password)
+    alert("succefully log in ")
+    const data= await  getUserData(user.user.uid)
+   setUser({
+        name:data.name,
+        photo:data.photoURL,
+        email:"",
+        id:user.user.uid,
         login:true
-      })
+       })
 
-    })
-  }
+       const favoritesArr=await getFavorites(user.user)
+       setFavorite(favoritesArr)
+      navigator("/home")
+ 
+    }
 
+}catch(e){
+  console.error(e);
+}
   }
     return(
         <>

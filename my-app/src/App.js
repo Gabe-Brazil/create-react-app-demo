@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from "./components/Navbar/Navbar.jsx"
 
-import { getFavorites } from './utils/firebase'
+import { getFavorites, uid, getUserData } from './utils/firebase'
 
 
 
@@ -95,6 +95,8 @@ backendCallAPI();
 
 
 function addFavorite(book){
+  console.log(favoriteBooks)
+  console.log(favoriteBooks.indexOf(book))
   if(favoriteBooks.indexOf(book)==-1){
     setFavorite([...favoriteBooks,book])
   }else{
@@ -108,6 +110,7 @@ function addFavorite(book){
         result.push(arr[i])
       }
     }
+ 
 
 
     setFavorite(result)
@@ -115,8 +118,6 @@ function addFavorite(book){
   }
 
 }
-
-
 
 const Result=()=>{
 
@@ -137,7 +138,17 @@ useEffect(()=>{
 },[user])
 
 
+useEffect(() => {
+  async function fetchUserData() {
+    const userData = await getUserData();
+    console.log(userData)
+    const currentUser = userData.find((u) => u.id === uid);
+    setUser(currentUser);
+    console.log(user, "userdata from useEffect app.js")
+  }
 
+  fetchUserData();
+}, []);
 
 
 
@@ -166,6 +177,7 @@ useEffect(()=>{
 
 
 
+
   return (
   
  
@@ -184,7 +196,7 @@ useEffect(()=>{
 
   <Route path="/signup" element={ <Signup/>}/>
 
-  <Route path="/login" element={ <Login setUser={setUser}/>}/>
+  <Route path="/login" element={ <Login setFavorite={setFavorite} setUser={setUser}/>}/>
      
    </Routes>
   

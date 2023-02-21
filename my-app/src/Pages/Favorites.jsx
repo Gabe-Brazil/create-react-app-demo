@@ -21,7 +21,8 @@ const [loading,setLoading]=useState(true)
           arr.push({...info,
             image:info.imageLinks.thumbnail ,
             author:(info.authors&&info.authors.length>0)?item.volumeInfo.authors[0]:"" 
-            ,marked:favoriteBooks.indexOf(item.selfLink)>-1
+            ,marked:favoriteBooks.indexOf(item.selfLink)>-1,
+            link:item.selfLink
           })
       })
       //arr is empty 
@@ -33,21 +34,23 @@ const [loading,setLoading]=useState(true)
      setLoading(false);
   })
 
-  },[])
+  },[favoriteBooks])
 
     return(
     
       <> 
       <div className="favorites" > 
          {books.length>0 &&
-         books.map(({title,image,author,marked})=>{
+         books.map(({title,image,author,marked,link})=>{
           return <> <Bookcard
-           title={title}
+           title={title ? title : "Unknown Title"}
            image={image}
-           author={author}
-           marked={marked}
+           author={author ? author : "Unknown Author"}
+           marked={true}
            addFavorite={addFavorite}
            loading={loading}
+           user={user}
+           self={link}
            />
       
 
@@ -62,4 +65,3 @@ const [loading,setLoading]=useState(true)
       
     }
 
-    // Fix blank data being added to favorites (causes system to break)

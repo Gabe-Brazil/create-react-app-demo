@@ -1,6 +1,6 @@
 import LoginForm from "../components/LoginForm.jsx"
 
-export default function Login({setUser}){
+export default function Login({setUser,setFavorite}){
     
 
     return(
@@ -8,7 +8,7 @@ export default function Login({setUser}){
       <> 
 
 
-      <LoginForm setUser={setUser}/>
+      <LoginForm setFavorite={setFavorite} setUser={setUser}/>
       
       </>
     )

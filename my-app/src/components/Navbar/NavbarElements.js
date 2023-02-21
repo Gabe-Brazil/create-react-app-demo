@@ -7,7 +7,6 @@ export const Nav = styled.nav`
   height: 35px;
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem calc((100vw - 1000px) / 2);
   z-index: 12;
   /* Third Nav */
   /* justify-content: flex-start; */
@@ -81,4 +80,17 @@ export const NavBtnLink = styled(Link)`
     background: #000000;
     color: #FFFFFF;
   }
+`;
+
+export const NavProfile = styled.div`
+display: flex;
+align-items: center;
+margin-left: auto;
+cursor: pointer;
+img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 `;
