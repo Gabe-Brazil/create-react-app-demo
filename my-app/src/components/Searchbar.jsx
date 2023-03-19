@@ -11,7 +11,7 @@ function Searchbar({searchTerm,setSearchTerm,handleSearch,goLeft,goRight}){
 
     <button onClick={goLeft}> Back </button>
     <button onClick={goRight}> Next </button>
-    <button class="gradient-button gradient-button-3" onClick={handleSearch}> Search! </button>
+    <button className="gradient-button gradient-button-3" onClick={handleSearch}> Search! </button>
     
     </div>
       

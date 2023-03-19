@@ -21,26 +21,26 @@ function SignupForm(){
   }
     return(
         <>
-        <div class="login-form-bd">
-        <div class="form-wrapper">
-          <div class="form-container">
+        <div className="login-form-bd">
+        <div className="form-wrapper">
+          <div className="form-container">
             <h1> Please Signup</h1>
             <form>
-              <div class="form-control">
+              <div className="form-control">
                 <input type="text" required value={username} onChange={(e)=>{setUsername(e.target.value)}}></input>
                 <label> Username</label>
               </div>
 
-              <div class="form-control">
+              <div className="form-control">
                 <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type="text" required></input>
                 <label> Email</label>
               </div>
       
-              <div class="form-control">
+              <div className="form-control">
                 <input value={password} onChange={(e)=>{setPassword(e.target.value)}}  required></input>
                 <label> Password </label>
               </div>
-              <button onClick={handleSignUp} class="login-btn">Sign Up</button>
+              <button onClick={handleSignUp} className="login-btn">Sign Up</button>
              
             </form>
           </div>

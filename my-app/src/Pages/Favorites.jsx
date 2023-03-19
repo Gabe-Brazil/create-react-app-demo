@@ -26,7 +26,7 @@ const [loading,setLoading]=useState(true)
           })
       })
       //arr is empty 
-      console.log(arr.length==0)
+      //console.log(arr.length==0)
       if(arr.length==0 || !user.login){
        navigator("/home")
       }
