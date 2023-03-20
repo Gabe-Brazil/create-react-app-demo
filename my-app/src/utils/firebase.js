@@ -193,7 +193,7 @@ const docRef = doc(db, "users",uid);///
 const document = await getDoc(docRef);
 if (document.exists()) {
   const favoritesLink=document.data().favorites
-
+  
   const docRef2=doc(db,"favorites",favoritesLink)
   const docSnap2=await getDoc(docRef2)
   
@@ -207,9 +207,13 @@ if (document.exists()) {
   });
 
 
+
+
 }else{
   console.error("document is not exist")
 }
+
+
 
 //add to the favorites collection 
 

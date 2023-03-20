@@ -40,15 +40,15 @@ return (
       <Link style={{textDecoration:"none"}} to="/detail"> 
       <Button> Expand </Button>
       </Link>
-      {console.log(user)}
+      
       {user && user.login && <Button onClick={async()=>{
         
         if (marked) {
-          await removeFromFavorites(self, user.id);
+          await removeFromFavorites(title, author, image, self, user.id);
         } else {
-          await addToFavorites(self, user.id);
+          await addToFavorites(title, author, image, self, user.id);
         }
-        addFavorite(self)}}>{marked?"Remove from ":"Add to "}Favorite </Button>   }
+        addFavorite(title, author, image, self)}}>{marked?"Remove from ":"Add to "}Favorite </Button>   }
         
       </CardActions>
     </Card>
